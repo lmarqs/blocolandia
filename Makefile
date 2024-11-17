@@ -5,19 +5,21 @@
 # SKETCH=lcd
 # PORT=/dev/ttyUSB0
 
-init: update-index install-dependencies
+init: update-index install-cores install-libs
 
 update-index:
 	arduino-cli core update-index --config-file arduino-cli.yaml
 	arduino-cli lib  update-index --config-file arduino-cli.yaml
 
-install-dependencies:
+install-cores:
 	arduino-cli core install arduino:avr@1.8.6 --config-file arduino-cli.yaml
+	arduino-cli core install esp32:esp32@3.0.7 --config-file arduino-cli.yaml
+	# arduino-cli core install esp8266:esp8266@3.1.2 --config-file arduino-cli.yaml
+
+install-libs:
 	arduino-cli lib install Dabble@1.5.2 --config-file arduino-cli.yaml
 	arduino-cli lib install LiquidCrystal@1.0.7 --config-file arduino-cli.yaml
 	arduino-cli lib install 'RoboCore - Vespa@1.3.0' --config-file arduino-cli.yaml
-	# arduino-cli core install esp8266:esp8266@3.1.2 --config-file arduino-cli.yaml
-	# arduino-cli core install esp32:esp32@3.0.7 --config-file arduino-cli.yaml
 	# arduino-cli lib install ESP8266WiFi@1.0 --config-file arduino-cli.yaml
 
 run: compile upload monitor
