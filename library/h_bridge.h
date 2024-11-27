@@ -6,13 +6,13 @@
 
 class HBridge {
  private:
-  uint8_t noSignalCount;
+  uint8_t onLoopCount;
 
  protected:
   void signal();
 
  public:
-  void noSignal(uint8_t whenToStop = 10);
+  void onLoop(uint8_t whenToStop = 10);
   void move(int32_t value);
   virtual void stop();
   virtual void forward(int32_t value);

@@ -2,13 +2,13 @@
 
 #include <Arduino.h>
 
-void HBridge::noSignal(uint8_t whenToStop) {
-  if (noSignalCount++ >= whenToStop) {
+void HBridge::onLoop(uint8_t whenToStop) {
+  if (onLoopCount++ >= whenToStop) {
     stop();
   }
 }
 
-void HBridge::signal() { noSignalCount = 0; }
+void HBridge::signal() { onLoopCount = 0; }
 
 void HBridge::move(int32_t value) {
   if (value > 0) {
